@@ -6,7 +6,6 @@ pragma solidity ^0.4.25;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-
 contract ExerciseC6B {
     using SafeMath for uint256; // Allow SafeMath functions to be called for all uint256 types (similar to "prototype" in Javascript)
 
@@ -14,18 +13,13 @@ contract ExerciseC6B {
     /*                                       DATA VARIABLES                                     */
     /********************************************************************************************/
 
+    mapping(address => uint256) private sales;
+    address private contractOwner; // Account used to deploy contract
 
-    address private contractOwner;                  // Account used to deploy contract
-
-
-    constructor
-                (
-                )
-                public 
-    {
+    constructor() public {
         contractOwner = msg.sender;
     }
-   
+
     /********************************************************************************************/
     /*                                       FUNCTION MODIFIERS                                 */
     /********************************************************************************************/
@@ -34,10 +28,9 @@ contract ExerciseC6B {
     // before a function is allowed to be executed.
 
     /**
-    * @dev Modifier that requires the "ContractOwner" account to be the function caller
-    */
-    modifier requireContractOwner()
-    {
+     * @dev Modifier that requires the "ContractOwner" account to be the function caller
+     */
+    modifier requireContractOwner() {
         require(msg.sender == contractOwner, "Caller is not contract owner");
         _;
     }
@@ -46,7 +39,16 @@ contract ExerciseC6B {
     /*                                     SMART CONTRACT FUNCTIONS                             */
     /********************************************************************************************/
 
+    /*function saveWithdraw(uint256 amount) external {
+        // Checks
+        require(msg.sender == tx.origin, "Contract is not allow");
+        require(sales[msg.sender] >= amount, "Insuficient founds");
 
-    
+        // Effects
+        // uint256 prev = sales[msg.sender];
+        sales[msg.sender] = sales[msg.sender].sub(amount);
+
+        // Interaction
+        msg.sender.transfer(amount);
+    }*/
 }
-
