@@ -1,5 +1,5 @@
-var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat";
+var HDWalletProvider = require("@truffle/hdwallet-provider");
+var mnemonic = "wealth junk frog elegant half ordinary odor glimpse bus style brick rifle";
 
 module.exports = {
   networks: {
